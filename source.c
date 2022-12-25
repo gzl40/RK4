@@ -28,7 +28,7 @@ struct Planet{
 struct Planet planet[4]={{123,32,43,2,5.965E24,0},{214,332,3844039,2,1023,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
 **/
 
-double planet[4][14]= {{0,0,0,0,5965,0},{0,1020,384,0,7342,0},{},{}};
+double planet[4][14]= {{0,0,0,0,59650,0},{0,1020,384,0,7342,0},{},{}};
 
 double ffunc(double t,double x,double v){ //时间，原函数，一阶导
 	return v;                
@@ -96,7 +96,7 @@ double rk4(double h){
 		planet[i][7]=gfunc(i,1,1,h);}
 	for(i=0;i<4;i++){
 		planet[i][8]=ffunc(t+h/2,planet[i][2]+h*planet[i][6],planet[i][0]+h*planet[i][7]/2);
-		planet[i][9]=gfunc(i,1,2,h);}		
+		planet[i][9]=gfunc(i,1,2,h);}
 	for(i=0;i<4;i++){
 		planet[i][10]=ffunc(t+h/2,planet[i][2]+h*planet[i][8]/2,planet[i][0]+h*planet[i][9]/2);
 		planet[i][11]=gfunc(i,1,3,h);}
@@ -132,16 +132,16 @@ double rk4(double h){
 
 int main(){
 
-	//	initgraph(1024, 600);	
+		initgraph(1024, 600);	
 	while(1){
 		rk4(0.01);
-		printf("%lf %lf\n",planet[0][0],planet[0][1]);
-//		setcolor(GREEN);
-//		setfillcolor(GREEN);
-//		fillcircle((int)planet[0][2]/1+500, (int)planet[0][3]/1+300, 2);
-//		setcolor(BLUE);
-//		setfillcolor(BLUE);
-//		fillcircle((int)planet[1][2]/1+500, (int)planet[1][3]/1+300, 2);
+		printf("%lf %lf %lf %lf\n",planet[0][0],planet[0][1],planet[1][0],planet[1][1]);
+		setcolor(GREEN);
+		setfillcolor(GREEN);
+		fillcircle((int)planet[0][2]/1+500, (int)planet[0][3]/1+300, 2);
+		setcolor(BLUE);
+		setfillcolor(BLUE);
+		fillcircle((int)planet[1][2]/1+500, (int)planet[1][3]/1+300, 2);
 	}
 	return 0;
 }
